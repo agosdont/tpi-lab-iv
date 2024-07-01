@@ -1,4 +1,4 @@
-const url = "http://127.0.0.1:8000/usuarios";
+const url = "http://127.0.0.1:8000/Usuarios";
 
 //API-REST USUARIOS//
 
