@@ -31,7 +31,10 @@ class UsuarioService():
 
     def update_usuario(self, id: int, data: UsuarioSchema):
         usuario = self.db.query(UsuarioModel).filter(UsuarioModel.id == id).first()
-        # usuario.id = data.id
+        if usuario.email != data.email:
+            lista = self.get_usuarios()
+            emailDuplicado(data,lista)
+            usuario.email = data.email
         usuario.nombre = data.nombre
         usuario.email = data.email
         usuario.password = data.password
