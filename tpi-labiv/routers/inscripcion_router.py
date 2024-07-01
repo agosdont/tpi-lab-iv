@@ -66,3 +66,25 @@ def delete_inscripcion(id: int):
         return JSONResponse(status_code=404, content={'message': "No encontrado"})
     InscripcionService(db).delete_inscripcion(id)
     return JSONResponse(status_code=200, content={"message": "Se ha eliminado la inscripcion"})
+
+@inscripcion_router.get("/inscripciones/promedio", tags=['Inscripciones'], status_code=200)
+def get_promedio_inscripciones():
+    db = Session()
+    promedio_inscripciones = InscripcionService(db).get_promedio_inscripciones()
+    return JSONResponse(
+        status_code=200,
+        content={
+            'promedio_inscripciones': promedio_inscripciones
+        }
+    )
+
+@inscripcion_router.get("/inscripciones/activas", tags=['Inscripciones'], status_code=200)
+def get_total_inscripciones_activas():
+    db = Session()
+    total_inscripciones_activas = InscripcionService(db).get_total_inscripciones_activas()
+    return JSONResponse(
+        status_code=200,
+        content={
+            'total_inscripciones_activas': total_inscripciones_activas
+        }
+    )

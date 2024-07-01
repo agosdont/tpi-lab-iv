@@ -1,7 +1,11 @@
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
+from sqlalchemy import func
 from models.evento_model import EventoModel
 from schemas.evento_schema import EventoSchema
 from services.categoria_service import CategoriaService
 from utils.validators import idDuplicados
+from models.inscripcion_model import InscripcionModel
 
 class EventoService():
     
@@ -55,4 +59,18 @@ class EventoService():
         self.db.query(EventoModel).filter(EventoModel.id == id).delete()
         self.db.commit()
         return True
+
+    def get_evento_mas_inscripciones(self):
+        resultado = (
+            self.db.query(EventoModel.nombre, func.count(InscripcionModel.id).label('total_inscripciones'))
+            .join(InscripcionModel, InscripcionModel.evento_id == EventoModel.id)
+            .group_by(EventoModel.nombre)
+            .order_by(func.count(InscripcionModel.id).desc())
+            .limit(1)
+            .one()
+        )
+        return resultado
     
+    def get_total_eventos(self):
+        total_eventos = self.db.query(func.count(EventoModel.id)).scalar()
+        return total_eventos

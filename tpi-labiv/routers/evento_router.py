@@ -19,6 +19,28 @@ def get_eventos(nombre: str = None, descripcion: str = None) -> List[EventoSchem
     result = EventoService(db).get_eventos(nombre, descripcion)
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
+@evento_router.get("/evento/mas_inscripciones", tags=['Eventos'], response_model=List[EventoSchema], status_code=200)
+def get_evento_mas_inscripciones():
+    db = Session()
+    result = EventoService(db).get_evento_mas_inscripciones()
+    return JSONResponse(
+    status_code=200,
+    content=jsonable_encoder({
+        'nombre': result.nombre,
+        'total_inscripciones': result.total_inscripciones
+        })
+    )
+
+@evento_router.get("/eventos/total", tags=['Eventos'], status_code=200)
+def get_total_eventos():
+    db = Session()
+    total_eventos = EventoService(db).get_total_eventos()
+    return JSONResponse(
+        status_code=200,
+        content={
+            'total_eventos': total_eventos
+        }
+    )
 
 @evento_router.get('/eventos/{id}', tags=['Eventos'], response_model=EventoSchema, dependencies=[Depends(JWTBearer())])
 def get_evento(id: int = Path(ge=1)) -> EventoSchema:
@@ -84,3 +106,4 @@ def delete_evento(id: int):
         return JSONResponse(status_code=404, content={'message': "No encontrado"})
     EventoService(db).delete_evento(id)
     return JSONResponse(status_code=200, content={"message": "Se ha eliminado el producto"})
+
