@@ -1,4 +1,4 @@
-import { categoriasServices } from ".usuarios-servicios.js";
+import { categoriasServices } from "/servicios/categorias-servicios.js";
 
 
 const htmlAmCategorias = `

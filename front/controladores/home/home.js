@@ -2,6 +2,7 @@ import { usuariosServices } from "../../servicios/usuarios-servicios.js";
 import { inscripcionesServices } from "../../servicios/inscripciones-servicios.js";
 import { eventosServices } from "../../servicios/eventos-servicios.js";
 import { categoriasServices } from "../../servicios/categorias-servicios.js";
+
 const htmlHome = 
 ` <div class="row" >
     <div class="col-lg-3 col-6">

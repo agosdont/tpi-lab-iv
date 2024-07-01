@@ -5,4 +5,4 @@ class InscripcionSchema(BaseModel):
     id: int = Field (gt=0)
     evento_id: int = Field (gt=0)
     usuario_id: int = Field (gt=0)
-    fecha_inscripción: date
+    fecha_inscripcion: date

@@ -1,4 +1,4 @@
-const url = "http://127.0.0.1:8000/Inscripciones";
+const url = "http://127.0.0.1:8000/inscripciones";
 
 async function listar(id) {
     let cadUrl;

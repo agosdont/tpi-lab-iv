@@ -1,8 +1,8 @@
 import { Categorias } from "./categorias/categorias.js";
 import { Home } from "./home/home.js";
-import { Eventos} from "../controladores/productos/eventos-interfaz.js";
+import { Eventos} from "./productos/eventos-interfaz.js";
 import { Usuarios } from "./usuarios/usuarios.js";
-import { Inscripciones, Inscripciones } from "./ventas/interfaz-inscripciones.js";
+import { Inscripciones } from "./ventas/interfaz-inscripciones.js";
 
 export function Router(){
     let hash = location.hash;

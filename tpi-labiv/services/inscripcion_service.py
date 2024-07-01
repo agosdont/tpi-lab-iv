@@ -70,7 +70,7 @@ class InscripcionService:
         result = self.db.query(InscripcionModel).filter(InscripcionModel.id == id).first()
         result.evento_id = inscripcion.evento_id
         result.usuario_id = inscripcion.usuario_id
-        result.fecha_inscripción = inscripcion.fecha_inscripción
+        result.fecha_inscripcion = inscripcion.fecha_inscripcion
         self.db.commit()
         return result
 

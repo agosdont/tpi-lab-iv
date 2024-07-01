@@ -8,7 +8,7 @@ class InscripcionModel(Base):
     id = Column(Integer, primary_key = True)
     evento_id = Column(Integer, ForeignKey("evento.id"), nullable=False)
     usuario_id = Column(Integer, ForeignKey("usuario.id"), nullable=False)
-    fecha_inscripción = Column(Date)
+    fecha_inscripcion = Column(Date)
 
     # Relaciones con las tablas
     evento = relationship('EventoModel', lazy='joined')

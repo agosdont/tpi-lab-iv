@@ -1,4 +1,4 @@
-const url = "http://127.0.0.1:8000/Usuarios";
+const url = "http://127.0.0.1:8000/usuarios";
 
 //API-REST USUARIOS//
 
@@ -11,7 +11,7 @@ async function  login(usuario, password ){
             "Content-type": "application/json"
           },
         body: JSON.stringify({ email: usuario,
-                              password: password  })  
+                               password: password  })  
         
         
     })

@@ -21,7 +21,6 @@ const htmlInscripciones = `
            <th>Evento</th>
            <th>Usuario</th>
            <th>Fecha Inscripcion</th>
-           <th>Fecha Devolución</th>
            <th>Acciones</th>
            </tr>
        </thead>
