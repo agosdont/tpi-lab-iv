@@ -8,10 +8,6 @@ class EventoService():
     def __init__(self, db) -> None:
         self.db = db
 
-    # def get_eventos(self):
-    #     result = self.db.query(EventoModel).all()
-    #     return result
-
     def get_eventos(self, nombre: str = None, descripcion: str = None):
         query = self.db.query(EventoModel)
         if nombre:
@@ -27,19 +23,6 @@ class EventoService():
     def get_evento_categoria(self, categoria_id: int):
         result = self.db.query(EventoModel).filter(EventoModel.categoria_id == categoria_id).all()
         return result
-
-
-    # def get_libro_by_titulo(self, titulo: str):
-    #     result = self.db.query(EventoModel).filter(LibroModel.titulo == titulo).all()
-    #     return result
-    
-    # def get_libro_by_autor(self, autor: str):
-    #     result = self.db.query(LibroModel).filter(LibroModel.autor == autor).all()
-    #     return result
-    
-    # def get_libro_by_categoria(self, categoria_id: int):
-    #     result = self.db.query(LibroModel).filter(LibroModel.categoria_id == categoria_id).all()
-    #     return result
 
     def create_evento(self, evento: EventoSchema):
         print("Datos recibidos para crear Evento:", evento)
@@ -73,6 +56,3 @@ class EventoService():
         self.db.commit()
         return True
     
-    # def get_libro_by_prestamo(self, prestamo: bool):
-    #     result = self.db.query(LibroModel).filter(LibroModel.prestamo == prestamo).all()
-    #     return result

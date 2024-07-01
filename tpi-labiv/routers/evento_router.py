@@ -16,7 +16,7 @@ evento_router = APIRouter()
 @evento_router.get('/eventos', tags=['Eventos'], response_model=List[EventoSchema], status_code=200)
 def get_eventos(nombre: str = None, descripcion: str = None) -> List[EventoSchema]:
     db = Session()
-    result = EventoService(db).get_libros(nombre, descripcion)
+    result = EventoService(db).get_eventos(nombre, descripcion)
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
 
