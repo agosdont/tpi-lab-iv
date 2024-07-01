@@ -7,6 +7,7 @@ from schemas.inscripcion_schema import InscripcionSchema
 from services.inscripcion_service import InscripcionService
 from middlewares.jwt_bearer import JWTBearer
 from fastapi.encoders import jsonable_encoder
+from utils.validators import validar_cupos_disponibles
 
 inscripcion_router = APIRouter()
 
@@ -43,7 +44,7 @@ def get_inscripcion_usuario_activa(usuario_id: int) -> List[InscripcionSchema]:
 @inscripcion_router.post('/inscripciones', tags=['Inscripciones'], response_model=dict, status_code=201)
 def create_inscripcion(inscripcion: InscripcionSchema):
     db = Session()
-    # validar_cupos_disponibles(db, inscripcion.evento_id)
+    validar_cupos_disponibles(db, inscripcion.evento_id)
     InscripcionService(db).create_inscripcion(inscripcion)
     return JSONResponse(status_code=201, content={"message": "La inscripción ha sido registrada exitosamente"})
 
