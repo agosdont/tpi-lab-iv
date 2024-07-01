@@ -2,7 +2,7 @@ var inputEmail=null;
 var inputPassword=null;
 var frmLogin=null;
 
-import { usuariosServices } from "labi/front/servicios/usuarios-servicios.js";
+import { usuariosServices } from ".usuarios-servicios.js";
 
 
 /* document.addEventListener('DOMContentLoaded', () => {

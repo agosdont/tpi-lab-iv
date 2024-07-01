@@ -1,4 +1,4 @@
-import { usuariosServices } from "/servicios/usuarios-servicios.js";
+import { usuariosServices } from "labiv/front/servicios/usuarios-servicios.js";
 
 
 const htmlAmUsuarios = `
